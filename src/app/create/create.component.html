@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <b>{{ title }}</b>
+    </div>
+    <div class="panel-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">NPM</label>
+          <input type="text" class="form-control" placeholder="Masukan NPM Anda" formControlName="npm" #npm />
+        </div>
+        <div *ngIf="angForm.controls['npm'].invalid && (angForm.controls['npm'].dirty || angForm.controls['npm'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['npm'].errors.required">
+            NPM is required.
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4">Nama</label>
+          <input type="text" class="form-control" placeholder="Masukan Nama Anda" formControlName="nama" #nama />
+        </div>
+        <div *ngIf="angForm.controls['nama'].invalid && (angForm.controls['nama'].dirty || angForm.controls['nama'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['nama'].errors.required">
+            Nama is required.
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4">Jenis Kelamin</label>
+          <select class="form-control" formControlName="jk" #jk>
+            <option value="" >Pilih Jenis Kelamin</option>
+          	<option>Laki-Laki</option>
+          	<option>Perempuan</option>
+          </select>
+        </div>
+        <div *ngIf="angForm.controls['jk'].invalid && (angForm.controls['jk'].dirty || angForm.controls['jk'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['jk'].errors.required">
+            Jenis Kelamin is required.
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-4">No HP</label>
+          <input type="text" class="form-control" placeholder="Masukan No HP Anda" formControlName="no_hp" #no_hp />
+        </div>
+        <div *ngIf="angForm.controls['no_hp'].invalid && (angForm.controls['no_hp'].dirty || angForm.controls['no_hp'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['no_hp'].errors.required">
+            No HP is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+         <td> <button (click)="tambahMahasiswa(npm.value, nama.value, no_hp.value, jk.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary btn-sm"> <i class="fa fa-save" ></i> Save</button></td> <td><a class="btn btn-primary btn-sm" routerLink="/index" routerLinkActive="active">Batal
+      </a></td>
+        </div>
+      </form>
+    </div>
+  </div>
